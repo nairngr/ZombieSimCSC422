@@ -6,5 +6,6 @@ public class Soldier extends Character {
         this.health = 100;
         this.attack = 10;
         this.survivor = true;
+        this.alive = true;
     }
 }

@@ -6,6 +6,6 @@ public class Tank extends Character {
         this.health = 150;
         this.attack = 20;
         this.survivor = false;
+        this.alive = true;
     }
-
 }

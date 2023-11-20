@@ -6,6 +6,6 @@ public class Teacher extends Character {
         this.health = 50;
         this.attack = 5;
         this.survivor = true;
+        this.alive = true;
     }
 }
-

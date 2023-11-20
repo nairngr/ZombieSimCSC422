@@ -6,5 +6,6 @@ public class Child extends Character {
         this.health = 20;
         this.attack = 2;
         this.survivor = true;
+        this.alive = true;
     }
 }
