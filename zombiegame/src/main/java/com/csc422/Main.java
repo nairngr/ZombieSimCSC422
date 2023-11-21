@@ -1,17 +1,30 @@
 package com.csc422;
+import java.util.ArrayList;
+
+
 
 // Main to be updated later
 public class Main {
     public static void main(String[] args) {
-        Tank tank1 = new Tank();
-        Soldier sgtJohn = new Soldier();
+        Tank tank1 = new Tank("Tank 1");
+        Tank tank2 = new Tank("Tank 2");
+        Tank tank3 = new Tank("Tank Champion");
+        Soldier sgtJohn = new Soldier("Sgt John");
+        Soldier cplSammy = new Soldier("Cpl Sammy");
 
-        System.out.println("There is a tank with " + tank1.getAttack() + " attack power and " + tank1.getHealth() + " health");
+        ArrayList<Character> list1 = new ArrayList<Character>();
+        list1.add(tank1);
+        list1.add(tank2);
+        list1.add(tank3);
+        Team zombies = new Team(list1);
 
-        tank1.setHealth(tank1.getHealth() - sgtJohn.getAttack());
+        ArrayList<Character> list2 = new ArrayList<Character>();
+        list2.add(sgtJohn);
+        list2.add(cplSammy);
+        Team survivors = new Team(list2);
 
-        System.out.println("The tank is attacked by sgtJohn and now has " + tank1.getHealth() + " health");
-        
+        // initiate the battle
+        survivors.battle(zombies);
 
     }
 }
