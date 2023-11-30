@@ -35,16 +35,22 @@ public class Team {
                 if (a.health > 0 && d.health > 0) { // checks to ensure the attack isn't dead and the defender isn't
                                                     // dead. If they are both alive, a attacks d.
                     d.setHealth(d.health - a.attack); // Reduce d health by a attack
-                    if (d.health > 0) { // if d is alive prints the attack
-                        System.out.println(a.name + " attacks " + d.name + " and " + d.name + " now has " + d.health
-                                + " health remaining.");
-                    } else { // if d is dead prints that a killed d
-                        System.out.println(a.name + " killed " + d.name);
-                    }
                 }
             }
         }
     }
+    
+    //Counts the number of survivors
+    public int countSurvivors() {
+        int count = 0;
+        for (Character c : this.list) {
+            if(c.health > 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+    
 
     // The initiating class battles the target (zombies) until one team is completely dead
     public void battle(Team zombies) {
@@ -54,5 +60,11 @@ public class Team {
             zombies.checkActive();
             zombies.fight(this);
         }
+        
+        int survivors = countSurvivors();
+        
+        System.out.println("We have " + this.list.size() + " survivors trying to make it to safety.");
+        System.out.println("But there are " + zombies.list.size() + " zombies waiting for them.");
+        System.out.println(survivors + " have made it to safety.");
     }
 }
