@@ -28,13 +28,21 @@ public class Team {
         }
     }
 
-    // Method for having this Team attack oppTeam to be used in a battle method.
+     // Method for having this Team attack oppTeam to be used in a battle method.
     public void fight(Team oppTeam) {
-        for (Character a : this.list) { // for each character in this list
-            for (Character d : oppTeam.list) { // loop over each character in the opposing list
-                if (a.health > 0 && d.health > 0) { // checks to ensure the attack isn't dead and the defender isn't
-                                                    // dead. If they are both alive, a attacks d.
-                    d.setHealth(d.health - a.attack); // Reduce d health by a attack
+        for (Character attacker : this.list) {
+            for (Character defender : oppTeam.list) {
+                if (attacker.getHealth() > 0 && defender.getHealth() > 0) {
+                    // Reduce defender's health by attacker's attack
+                    defender.setHealth(defender.getHealth() - attacker.getAttack());
+
+                    // Print details of the attack only if the defender is killed
+                    if (defender.getHealth() <= 0) {
+                        System.out.println(attacker.getName() + " killed " + defender.getName());
+                    }//else {
+                    //System.out.println(attacker.getName() + " attacked " + defender.getName() +
+                          //  " (Health: " + defender.getHealth() + ")");
+                    //}
                 }
             }
         }
@@ -51,20 +59,26 @@ public class Team {
         return count;
     }
     
-
     // The initiating class battles the target (zombies) until one team is completely dead
     public void battle(Team zombies) {
-        while (this.active == true && zombies.active == true) { // loops while both teams are still active
+        
+        System.out.println("We have " + this.list.size() + " survivors trying to make it to safety.(0 children, 3 teachers, 2 soldiers)");
+        System.out.println("But there are " + zombies.list.size() + " zombies waiting for them.(2 common infected, 7 tanks)\n");
+        
+        while (this.active && zombies.active) {
             this.checkActive();
             this.fight(zombies);
             zombies.checkActive();
             zombies.fight(this);
         }
-        
+
         int survivors = countSurvivors();
-        
-        System.out.println("We have " + this.list.size() + " survivors trying to make it to safety.");
-        System.out.println("But there are " + zombies.list.size() + " zombies waiting for them.");
-        System.out.println(survivors + " have made it to safety.");
+
+        if (survivors > 0) {
+            System.out.println(survivors + " have made it to safety.");
+        } else {
+            System.out.println("None of the survivors made it.");
+        }
     }
 }
+

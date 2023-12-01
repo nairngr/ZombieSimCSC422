@@ -1,19 +1,50 @@
 package com.csc422;
+
 import java.util.ArrayList;
 import java.util.Random;
-
-
 
 // Main to be updated later
 public class Main {
     public static void main(String[] args) {
-        Team zombies = generateZombies();
-        Team survivors = generateSurvivors();
+        Team zombies = createZombies();
+        Team survivors = createSurvivors();
 
         // initiate the battle
         survivors.battle(zombies);
     }
     
+    //generate the 5 survivors
+    public static Team createSurvivors(){
+        ArrayList<Character> survivorList = new ArrayList<>();
+                
+        for (int i = 1; i <= 2; i++) {
+            survivorList.add(new Soldier("Soldier " + i));
+        }
+
+        for (int i = 1; i <= 3; i++) {
+            survivorList.add(new Teacher("Teacher " + i));
+        }
+
+         return new Team(survivorList);
+        
+    }
+    
+    //generate the 9 zombies
+    public static Team createZombies(){
+        ArrayList<Character> zombieList = new ArrayList<>();
+        
+        
+        for (int i = 1; i <= 2; i++) {
+            zombieList.add(new CommonInfected("CommonInfected " + i));
+        }
+
+        for (int i = 1; i <= 7; i++) {
+            zombieList.add(new Tank("Tank " + i));
+        }
+        
+        return new Team(zombieList);
+    }
+   
     //randomly generates an amount of zombies between 5 and 20
     private static Team generateZombies() {
         ArrayList<Character> zombieList = new ArrayList<>();
