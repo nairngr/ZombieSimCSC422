@@ -35,6 +35,7 @@ public class Team {
                 if (attacker.getHealth() > 0 && defender.getHealth() > 0) {
                     // Reduce defender's health by attacker's attack
                     defender.setHealth(defender.getHealth() - attacker.getAttack());
+                    System.out.println(attacker.getAttack());
 
                     // Print details of the attack only if the defender is killed
                     if (defender.getHealth() <= 0) {

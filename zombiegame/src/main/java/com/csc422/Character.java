@@ -10,6 +10,8 @@ public class Character {
     Boolean survivor;
     String alive;
 
+    Weapon weapon = new Fists(); // Default weapon for each Character
+
     // Name getters and setters
     public void setName(String newName) {
         this.name = newName;
@@ -33,7 +35,7 @@ public class Character {
     }
 
     public int getAttack() {
-        return attack;
+        return this.attack + this.weapon.getPower();
     }
 
     public void setSurvivor(Boolean status) {
