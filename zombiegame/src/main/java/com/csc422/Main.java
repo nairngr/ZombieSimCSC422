@@ -82,9 +82,10 @@ public class Main {
             } else {
                 if (survivorList.get(i) instanceof Teacher) {
                     System.out.println("\nRise and shine, Mr. Freeman. Rise and shine...\n");
-                    survivorList.get(i).setAttack(100);
-                    survivorList.get(i).setHealth(200);
+                    survivorList.get(i).setAttack(200);
+                    survivorList.get(i).setHealth(300);
                     survivorList.get(i).setName("Gordon Freeman");
+                    survivorList.get(i).setWeapon(new Crowbar());
                 } else {
                     System.out.println(
                             survivorList.get(i).getName() + " picks up a crow bar. More of a tool than a weapon.");
