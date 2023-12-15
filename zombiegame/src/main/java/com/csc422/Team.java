@@ -35,11 +35,11 @@ public class Team {
                 if (attacker.getHealth() > 0 && defender.getHealth() > 0) {
                     // Reduce defender's health by attacker's attack
                     defender.setHealth(defender.getHealth() - attacker.getAttack());
-                    System.out.println(attacker.getAttack());
+                    //System.out.println(attacker.getAttack());
 
                     // Print details of the attack only if the defender is killed
                     if (defender.getHealth() <= 0) {
-                        System.out.println(attacker.getName() + " killed " + defender.getName());
+                        System.out.println(attacker.getName() + " killed " + defender.getName() + " with their " + attacker.getWeapon());
                     }//else {
                     //System.out.println(attacker.getName() + " attacked " + defender.getName() +
                           //  " (Health: " + defender.getHealth() + ")");
@@ -63,8 +63,8 @@ public class Team {
     // The initiating class battles the target (zombies) until one team is completely dead
     public void battle(Team zombies) {
         
-        System.out.println("We have " + this.list.size() + " survivors trying to make it to safety.(0 children, 3 teachers, 2 soldiers)");
-        System.out.println("But there are " + zombies.list.size() + " zombies waiting for them.(2 common infected, 7 tanks)\n");
+        System.out.println("We have " + this.list.size() + " survivors trying to make it to safety.\n");
+        System.out.println("But there are " + zombies.list.size() + " zombies waiting for them\n");
         
         while (this.active && zombies.active) {
             this.checkActive();

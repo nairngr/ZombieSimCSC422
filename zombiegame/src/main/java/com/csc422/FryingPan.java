@@ -4,6 +4,12 @@ package com.csc422;
 public class FryingPan implements Weapon {
     private final int power = 5;
     private final int accuracy = 75;
+    public String name = "frying pan";
+
+    @Override
+    public String getName(){
+        return this.name;
+    }
 
     @Override
     public int getPower() {

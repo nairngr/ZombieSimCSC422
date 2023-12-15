@@ -17,6 +17,14 @@ public class Character {
         this.name = newName;
     }
 
+    public void setWeapon(Weapon newWeapon) {
+        this.weapon = newWeapon;
+    }
+
+    public String getWeapon(){
+        return this.weapon.getName();
+    }
+
     public String getName() {
         return this.name;
     }

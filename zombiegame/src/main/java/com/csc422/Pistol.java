@@ -4,6 +4,12 @@ package com.csc422;
 public class Pistol implements Weapon {
     private final int power = 20;
     private final int accuracy = 45;
+    public String name = "pistol";
+
+    @Override
+    public String getName(){
+        return this.name;
+    }
 
     @Override
     public int getPower() {

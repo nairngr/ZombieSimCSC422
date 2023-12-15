@@ -5,4 +5,5 @@ public interface Weapon {
     int getPower();
     int getAccuracy();
     boolean isMeleeWeapon();
+    String getName();
 }
