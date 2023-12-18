@@ -28,26 +28,35 @@ public class Team {
         }
     }
 
-     // Method for having this Team attack oppTeam to be used in a battle method.
     public void fight(Team oppTeam) {
         for (Character attacker : this.list) {
             for (Character defender : oppTeam.list) {
                 if (attacker.getHealth() > 0 && defender.getHealth() > 0) {
-                    // Reduce defender's health by attacker's attack
-                    defender.setHealth(defender.getHealth() - attacker.getAttack());
-                    //System.out.println(attacker.getAttack());
+                    Weapon weapon = attacker.weapon; // Retrieve the attacker's weapon
+                    // Check if the attack hits based on accuracy
+                    double hitProbability = Math.random() * 100; // Random number between 0 and 100
+                    if (hitProbability <= weapon.getAccuracy()) {
+                        // Attack hits
+                        defender.setHealth(defender.getHealth() - attacker.getAttack());
+                        System.out.println(attacker.getName() + " hits " + defender.getName() +
+                                " with their " + weapon.getName() +
+                                " for " + attacker.getAttack() + " damage.");
 
-                    // Print details of the attack only if the defender is killed
-                    if (defender.getHealth() <= 0) {
-                        System.out.println(attacker.getName() + " killed " + defender.getName() + " with their " + attacker.getWeapon());
-                    }//else {
-                    //System.out.println(attacker.getName() + " attacked " + defender.getName() +
-                          //  " (Health: " + defender.getHealth() + ")");
-                    //}
+                        // Print details of the attack only if the defender is killed
+                        if (defender.getHealth() <= 0) {
+                            System.out.println(attacker.getName() + " killed " + defender.getName() +
+                                    " with their " + weapon.getName());
+                        }
+                    } else {
+                        // Attack misses
+                        System.out.println(attacker.getName() + "'s attack with " +
+                                weapon.getName() + " misses " + defender.getName());
+                    }
                 }
             }
         }
     }
+
     
     //Counts the number of survivors
     public int countSurvivors() {
